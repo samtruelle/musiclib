@@ -36,4 +36,17 @@
 		public function getArtist() {
 			return $this->artist;
 		}
+
+
+		/*
+		 * ===
+		 *	STATIC METHODS
+		 * ===
+		 */
+
+		public static function delete($user,$artist) {
+			$db = $_SESSION['db'];
+			$db->exec("delete from notarizeArtist where user = '$user' and artist = '$artist'");
+			/*print "Artist notarization deleted"; /* For testing purpose only */
+		}
 	}

@@ -86,13 +86,14 @@
 		 * ===
 		 */
 
-		public static function last( $number = 10 ) {
+public static function last( $number = 10 ) {
 			$db = $_SESSION['db'];
-			$stmt = $db->prepare( "select id from connection order by date desc limit 0, ?;" );
-			$stmt->bindParam(1, $number, PDO::PARAM_INT);
+			//$stmt = $db->prepare( "select id from connection order by date desc limit 0, ?;" );
+			//$stmt->bindParam(1, $number, PDO::PARAM_INT);
+			$stmt = $db->query( "select id from connection order by date desc limit 0, 10;" );
 			$log = array();
 			while ( $connection = $stmt->fetch(PDO::FETCH_NUM) )
-				$log[] = new Genre( $connection[0] );
+				$log[] = new Connection( $connection[0] );
 			$stmt->closeCursor();
 			return $log;
 		}

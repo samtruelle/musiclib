@@ -36,4 +36,17 @@
 		public function getAlbum() {
 			return $this->album;
 		}
+
+
+		/*
+		 * ===
+		 *	STATIC METHODS
+		 * ===
+		 */
+
+		public static function delete($user,$album) {
+			$db = $_SESSION['db'];
+			$db->exec("delete from notarizeAlbum where user = '$user' and album = '$album'");
+			/*print "Album notarization deleted"; /* For testing purpose only */
+		}
 	}
